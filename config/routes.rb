@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   post "/signup", to: "users#create"
   post "/login", to: "login#login"
-
   get '/auto_login', to: "login#auto_login"
+
 end

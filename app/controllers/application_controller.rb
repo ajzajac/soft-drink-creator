@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::Base
+class ApplicationController < ActionController::API
 
     def encode_token(id)
         JWT.encode({user_id: id}, "super_secret_code")
