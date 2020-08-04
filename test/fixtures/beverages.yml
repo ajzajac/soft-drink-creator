@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  size: 1
+  ingriedient: MyString
+  water: MyString
+  name: MyString
+
+two:
+  size: 1
+  ingriedient: MyString
+  water: MyString
+  name: MyString
