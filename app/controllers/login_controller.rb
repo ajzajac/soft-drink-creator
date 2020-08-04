@@ -1,7 +1,7 @@
 class LoginController < ApplicationController
 
     def login
-        user = User.find_by(name: params[:user][:name])
+        user = User.find_by(params[:name])
 
         if user
             token = encode_token(user.id)
