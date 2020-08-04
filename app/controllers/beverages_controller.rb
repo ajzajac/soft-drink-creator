@@ -1,3 +1,4 @@
+require 'pry'
 class BeveragesController < ApplicationController
 
     def index
