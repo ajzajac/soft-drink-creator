@@ -1,27 +1,26 @@
 class ApplicationController < ActionController::API
 
-    def encode_token(id)
-        JWT.encode({user_id: id}, "super_secret_code")
-    end
-    
-    def get_auth_header
-        request.headers["Authorization"]
-    end
+    skip_before_action :verify_authenticity_token, raise: false
+    helper_method :login!, :logged_in?, :current_user, :authorized_user?, :logout!
 
-    def decoded_token
-        begin
-            JWT.decode(get_auth_header, "super_secret_code")[0]["user_id"]
-        rescue
-            nil
-        end
-    end
-
-    def session_user
-        User.find_by(id: decoded_token)
+    def login!
+      session[:user_id] = @user.id
     end
 
     def logged_in?
-        !!session_user
+      !!session[:user_id]
     end
+
+    def current_user
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
+
+    def authorized_user?
+       @user == current_user
+     end
+
+    def logout!
+       session.clear
+     end
     
 end
