@@ -22,7 +22,6 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt'
 gem 'pry'
-gem 'jwt'
 gem 'rack-cors'
 gem 'active_model_serializers'
 

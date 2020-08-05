@@ -45,4 +45,4 @@ class SessionsController < ApplicationController
         params.require(:user).permit(:username, :email, :password)
     end
 
-    end
+end
