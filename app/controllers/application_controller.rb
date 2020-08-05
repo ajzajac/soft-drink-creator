@@ -1,8 +1,5 @@
 
 class ApplicationController < ActionController::API
-
-    # helper_method :encode_token, :get_auth_header, :decoded_token, :session_user, :logged_in?
-    # before_action :encode_token, :session_user
     
     def encode_token(id)
         JWT.encode({user_id: id}, "super_secret_code")
