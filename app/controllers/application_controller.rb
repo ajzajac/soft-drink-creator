@@ -1,26 +1,31 @@
+
 class ApplicationController < ActionController::API
 
-    skip_before_action :verify_authenticity_token, raise: false
-    helper_method :login!, :logged_in?, :current_user, :authorized_user?, :logout!
+    # helper_method :encode_token, :get_auth_header, :decoded_token, :session_user, :logged_in?
+    # before_action :encode_token, :session_user
+    
+    def encode_token(id)
+        JWT.encode({user_id: id}, "super_secret_code")
+      end
+    
+    def get_auth_header
+        request.headers["Authorization"]
+    end
 
-    def login!
-      session[:user_id] = @user.id
+    def decoded_token
+        begin
+            JWT.decode(get_auth_header, "super_secret_code")[0]["user_id"]
+        rescue
+            nil
+        end
+    end
+
+    def session_user
+        User.find_by(id: decoded_token)
     end
 
     def logged_in?
-      !!session[:user_id]
+        !!session_user
     end
-
-    def current_user
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    end
-
-    def authorized_user?
-       @user == current_user
-     end
-
-    def logout!
-       session.clear
-     end
     
 end

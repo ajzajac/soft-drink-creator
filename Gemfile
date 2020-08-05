@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem 'bcrypt'
+gem 'jwt'
 gem 'pry'
 gem 'rack-cors'
 gem 'active_model_serializers'
