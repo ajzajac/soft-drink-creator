@@ -8,11 +8,16 @@ class BeveragesController < ApplicationController
 
     def show
         @beverage = Beverage.find(params[:id])
-        render json: @beverage, status :ok
+        render json: @beverage
     end
 
     def create
-        @beverage = Beverage.create(beverageParams)
+        @beverage = Beverage.new(beverageParams)
+        if @beverage.save
+            render json: {beverage: @beverage}
+        else
+            render json: {errors: @beverage.errors.full_messages}
+        end
     end
 
     def update
@@ -24,7 +29,7 @@ class BeveragesController < ApplicationController
     private
 
     def beverageParams
-        params.require(:beverage).permit(:id, :name, :water, :size)
+        params.require(:beverage).permit(:id, :name, :user_id)
     end
 
 end

@@ -16,8 +16,6 @@ ActiveRecord::Schema.define(version: 2020_08_05_010934) do
   enable_extension "plpgsql"
 
   create_table "beverages", force: :cascade do |t|
-    t.float "size"
-    t.string "water"
     t.string "name"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
