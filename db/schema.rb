@@ -17,6 +17,10 @@ ActiveRecord::Schema.define(version: 2020_08_05_010934) do
 
   create_table "beverages", force: :cascade do |t|
     t.string "name"
+    t.string "base_flavor"
+    t.string "secondary_flavor"
+    t.string "water_type"
+    t.string "extra_flavor"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

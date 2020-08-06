@@ -29,7 +29,7 @@ class BeveragesController < ApplicationController
     private
 
     def beverageParams
-        params.require(:beverage).permit(:id, :name, :user_id)
+        params.require(:beverage).permit(:id, :name, :user_id, :base_flavor, :secondary_flavor, :water_type, :extra_flavor)
     end
 
 end
