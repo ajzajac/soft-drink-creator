@@ -11,12 +11,18 @@ def show
 end
 
 def create
-    @review = Review.new
+    @review = Review.new(reviewParams)
     if @review.save
         render json: @review
     else
         render json: {errors: @review.errors.full_messages} 
+    end
 end
 
+private 
+
+def reviewParams
+    params.require(:review).permit(:id, :beverage_id, :user_id, :description, :rating)
+end
 
 end
