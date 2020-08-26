@@ -28,7 +28,12 @@ ActiveRecord::Schema.define(version: 2020_08_19_192918) do
 
   create_table "favorites", force: :cascade do |t|
     t.string "beverage_id"
-    t.string "user_id"
+    t.integer "user_id"
+    t.string "name"
+    t.string "base_flavor"
+    t.string "secondary_flavor"
+    t.string "water_type"
+    t.string "extra_flavor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

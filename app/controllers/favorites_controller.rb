@@ -6,10 +6,15 @@ class FavoritesController < ApplicationController
     end
 
     def show
+        @favorite = Favorite.find(params[:id])
+        render json: @favorite
     end
 
     def create
-        @favorite = Favorite.new(favoriteParams)
+        beverage = Beverage.find(params[:beverage_id])
+        
+        @favorite = Favorite.new(user_id: params[:user_id], beverage_id: params[:beverage_id], name: beverage.name, secondary_flavor: beverage.secondary_flavor, base_flavor: beverage.base_flavor, water_type: beverage.water_type, extra_flavor: beverage.extra_flavor)
+
         if @favorite.save
             render json: {favorite: @favorite }
         else
@@ -21,12 +26,6 @@ class FavoritesController < ApplicationController
     end
 
     def delete
-    end
-
-    private
-
-    def favoriteParams
-        params.require(:favorite).permit(:id, :user_id, :beverage_id)
     end
 
 end

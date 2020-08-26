@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_many :beverages
+    has_many :favorites
 
     has_secure_password
 
