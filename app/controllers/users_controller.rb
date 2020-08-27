@@ -20,4 +20,12 @@ class UsersController < ApplicationController
       end
     end
 
+    def update
+      @user = User.find(params[:id])
+      @user.update(current_order: params[:order_id])
+      @user.save
+      render json: {user: @user.current_order }
+    end
+
+
 end

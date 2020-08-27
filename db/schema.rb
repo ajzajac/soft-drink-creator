@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_192918) do
+ActiveRecord::Schema.define(version: 2020_08_26_170439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_192918) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.string "beverage_id"
+    t.integer "beverage_id"
     t.integer "user_id"
     t.string "name"
     t.string "base_flavor"
@@ -45,6 +45,27 @@ ActiveRecord::Schema.define(version: 2020_08_19_192918) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer "beverage_id"
+    t.string "name"
+    t.string "base_flavor"
+    t.string "secondary_flavor"
+    t.string "water_type"
+    t.string "extra_flavor"
+    t.integer "quantity"
+    t.integer "order_id"
+    t.integer "item_price", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "total_price", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id"
     t.integer "beverage_id"
@@ -58,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_192918) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.integer "current_order", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -4,9 +4,13 @@ Rails.application.routes.draw do
   resources :beverages, :ingredients
   resources :reviews, only: [:create, :show, :index]
   resources :favorites
+  resources :orders
+  resources :order_items
 
-      post "/signup", to: "users#create"
-      post "/login", to: "auth#login"
-      get "/auto_login", to: "auth#auto_login"
+
+    post '/orders/neworder', to: 'orders#neworder'
+    post "/signup", to: "users#create"
+    post "/login", to: "auth#login"
+    get "/auto_login", to: "auth#auto_login"
 
 end
