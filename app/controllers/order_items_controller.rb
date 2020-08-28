@@ -12,7 +12,13 @@ class OrderItemsController < ApplicationController
 
         orderItem = OrderItem.create(beverage_id: params[:beverage_id], order_id: params[:order_id], name: params[:name], base_flavor: params[:base_flavor])
         orderItem.save 
-        render json: {order_item: order_items}
+
+        total = 0
+        order.order_items.each { |item| total += item.item_price }
+        order.total_price = total
+        order.save
+
+        render json: {order_total: total}
 
     end
 
