@@ -1,7 +1,6 @@
 class Beverage < ApplicationRecord
     has_many :ingredients
     belongs_to :user
-    belongs_to :favorite
     has_many :order_items
     has_many :orders, through: :order_items
 

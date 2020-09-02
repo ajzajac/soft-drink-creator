@@ -25,6 +25,11 @@ class OrderItemsController < ApplicationController
     def destroy
         order_item = OrderItem.find(params[:id])
         order_item.destroy
+        order = Order.find(current_site_user.current_order)
+        total = 0
+        order.order_items.each { |item| total += item.item_price }
+        order.total_price = total
+        order.save
        
         render json: {errors: order_item.errors.full_messages}
        

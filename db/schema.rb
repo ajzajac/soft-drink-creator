@@ -54,14 +54,14 @@ ActiveRecord::Schema.define(version: 2020_08_26_170439) do
     t.string "extra_flavor"
     t.integer "quantity"
     t.integer "order_id"
-    t.integer "item_price", default: 0
+    t.float "item_price", default: 0.0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "total_price", default: 0
+    t.float "total_price", default: 0.0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

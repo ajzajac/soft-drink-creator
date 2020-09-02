@@ -24,5 +24,10 @@ class ApplicationController < ActionController::API
     def logged_in?
         !!session_user
     end
+
+    def current_site_user
+        user_id = decoded_token[0]["user_id"]
+        user = User.find(user_id)
+    end
     
 end
