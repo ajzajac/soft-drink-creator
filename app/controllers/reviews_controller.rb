@@ -22,7 +22,7 @@ end
 private 
 
 def reviewParams
-    params.require(:review).permit(:id, :beverage_id, :user_id, :description, :rating)
+    params.require(:review).permit(:id, :beverage_id, :user_id, :description, :name, :rating)
 end
 
 end

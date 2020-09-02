@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2020_08_26_170439) do
     t.integer "beverage_id"
     t.text "description"
     t.integer "rating"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
