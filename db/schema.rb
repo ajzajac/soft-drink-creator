@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_08_26_170439) do
     t.string "extra_flavor"
     t.integer "quantity"
     t.integer "order_id"
-    t.float "item_price", default: 0.0
+    t.float "item_price", default: 4.99
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

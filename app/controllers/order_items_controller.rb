@@ -25,7 +25,8 @@ class OrderItemsController < ApplicationController
     def destroy
         order_item = OrderItem.find(params[:id])
         order_item.destroy
-        order = Order.find(current_site_user.current_order)
+        order = Order.find(params[:order_id])
+        order_items = order.order_items
         total = 0
         order.order_items.each { |item| total += item.item_price }
         order.total_price = total

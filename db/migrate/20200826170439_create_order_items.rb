@@ -9,7 +9,7 @@ class CreateOrderItems < ActiveRecord::Migration[6.0]
       t.string :extra_flavor
       t.integer :quantity
       t.integer :order_id
-      t.float :item_price, default: 0.00
+      t.float :item_price, default: 4.99
 
       t.timestamps
     end
