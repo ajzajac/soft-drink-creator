@@ -32,7 +32,7 @@ class OrderItemsController < ApplicationController
         order.total_price = total
         order.save
        
-        render json: {errors: order_item.errors.full_messages}
+        render json: {order: order, user: session_user}
        
     end
 

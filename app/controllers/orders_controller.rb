@@ -13,11 +13,17 @@ class OrdersController < ApplicationController
     def neworder
         beverage = Beverage.find(params[:beverage_id])
         
-        @order = Order.create(user_id: params[:user_id])
-        order_items = OrderItem.create(order_id: @order.id, beverage_id: beverage.id)
+        order = Order.create(user_id: params[:user_id])
+        order_items = OrderItem.create(order_id: order.id, beverage_id: beverage.id)
         user = User.find(params[:user_id])
-        user.update(current_order: @order.id)
-        order_items = @order.order_items
+        user.update(current_order: order.id)
+        order_items = order.order_items
+
+        total = 0
+        order.order_items.each { |item| total += item.item_price }
+        order.total_price = total
+        order.save
+
         render json: {order: order_items}
     end
 
